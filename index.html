@@ -12,28 +12,114 @@
     <script>
 
         console.log("************ petshop da RD ***************");
-        var cachorro = {
-            nome: "menino",
-            idade: 8,
-            raça: "vira-lata",
-            peso: 6.34,
-            cor: "mel",
-            dono: {
-                nome: "Gabriel",
-                idade: null
+        let pets = [
+            { 
+                nome: "menino",
+                idade: 8,
+                raça: "vira-lata",
+                tipo: "cachorro",
+                peso: 6.34,
+                cor: "mel",
+                dono: {
+                    nome: "Gabriel",
+                    idade: 22
+                },
+                vacinado: false,
+                servicos: ["banho", "vacina"]
             },
-            vacinado: false,
-            serviço: ["banho", "vacina"]
-        }
-        function vacinar(cachorro) {
+            {
+                nome: "gatinho fofo",
+                idade: 2,
+                raça: "vira-lata",
+                tipo: "gato",
+                peso: 3.56,
+                cor: "branco",
+                dono: {
+                    nome: "aurea",
+                    idade: 64
+                },
+                vacinado: false,
+                servicos: []
+            }]
+
+        const vacinar = cachorro => {
 
             if (cachorro.vacinado) {
                 console.log("não precisa");
             } else {
-               cachorro.vacinado = true;
-               console.log("vacina aplicada");
+                cachorro.vacinado = true;
+                console.log("vacina aplicada");
             }
         }
+        const adicionarpet = (nome, idade, raca, tipo, peso, cor, nomedono, idadedono, vacinado, servicos) => {
+            let temp = {
+                nome: nome,
+                idade: idade,
+                raca: raca,
+                tipo: tipo,
+                peso: peso,
+                cor: cor,
+                dono: {
+                    nome: nomedono,
+                    idade: idadedono
+                },
+                vacinado: vacinado,
+                servicos: servicos,
+            }
+            pets.push(temp)
+            console.log("pet adicioonado");
+            return temp;
+        }
+
+
+        const exibirpets = function () {
+            pets.forEach(function (valor, index) {
+                console.log("--------------------------------------")
+                console.log("nome do pet: " + valor.nome)
+                console.log("idade do pet: " + valor.idade)
+                console.log("raça do pet: " + valor.raça)
+                console.log("tipo do pet: " + valor.tipo)
+                console.log("peso do pet: " + valor.peso)
+                console.log("cor do pet: " + valor.cor)
+                console.log("dono do pet: " + valor.dono.nome)
+                console.log("idade do dono: " + valor.dono.idade)
+                console.log(valor.vacinado ? "ele já foi vacinado" : "esse pet ainda não foi vacinado")
+                console.log("serviços para se fazer no pet: " + valor.servicos)
+            });
+        }
+
+
+        // const filtrarPetsGatos = () => {
+        //     let petsTipoGato = [];
+
+        //     pets.forEach((pet, index) => {
+        //         if (pet.tipo == "gato") {
+        //             petsTipoGato.push(pet)
+        //         }
+        //     });
+        //     return petsTipoGato
+        // }
+
+
+
+        // const filtrarPetsGatos = () => {
+        //     let listaPetsGatos = pets.filter(function (pet, index) {
+        //         return pet.tipo == "gato"
+        //     })
+        //     return listaPetsGatos
+
+        // }
+
+        const listaPetsVacinados = () => {
+
+            pets.map(function (pet, index) {
+                return pet.vacinado = true
+               
+            })
+            console.log("vacina aplicado com sucesso")
+            return pets
+        }
+
 
     </script>
 </body>
